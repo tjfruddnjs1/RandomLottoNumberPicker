@@ -14,13 +14,14 @@ import javax.swing.JPanel;
 
 public class lotto_GUI extends JFrame{
 		
-		private JButton setButton;
-		private JPanel panel;
-		private JLabel label;
-		private Toolkit tk;
-		private Dimension dim,fdim;
-		private int x,fx;
-		private int y,fy;
+		static JButton setButton;
+		static JPanel panel;
+		static JLabel label;
+		static Toolkit tk;
+		static Dimension dim,fdim;
+		static int x,fx;
+		static int y,fy;
+		static Image img;
 		
     public lotto_GUI(String title){
     	super(title);
@@ -28,7 +29,7 @@ public class lotto_GUI extends JFrame{
     	panel = new JPanel();
         label = new JLabel("Number Setting");
         setButton = new JButton("Setting");
-        setButton.addActionListener(new listener());
+        setButton.addActionListener(new numberSetting());
         
         panel.add(label);
         panel.add(setButton);
@@ -53,7 +54,7 @@ public class lotto_GUI extends JFrame{
         super.setLocation(x/2-fx/2, y/2-fy/2);
         
         //Icon Setting
-		Image img = tk.getImage("lotto.png");
+		img = tk.getImage("lotto.png");
         this.setIconImage(img);
         
         super.setVisible(true);
@@ -66,28 +67,6 @@ public class lotto_GUI extends JFrame{
 
     public void exitButton(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
-    }
-    
-    class listener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			if(e.getSource() == setButton) {
-				final Frame fs = new Frame("Setting");
-				fs.setVisible(true);
-				fs.addWindowListener(new WindowAdapter() {
-					public void windowClosing(WindowEvent e) {
-						fs.setVisible(false);
-						fs.dispose();
-					}
-				});
-				fs.setSize(300,200);
-				fs.setLocation(x/2-fx/2+250, y/2-fy/2+100);
-				
-			}
-		}
-    	
     }
    
     public static void main(String[] args){
