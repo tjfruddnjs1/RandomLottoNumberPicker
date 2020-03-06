@@ -12,51 +12,52 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-class numberSetting implements ActionListener, KeyListener{
+class drawSetting implements ActionListener,KeyListener {
+
 		lotto_GUI lg;
-		static JTextField textFieldNumber;
-		static Frame frameSettingNumber;
+		static JTextField textFieldDraws;
+		static Frame frameSettingDraws;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if(e.getSource() == lg.setNumbersButton) {
-				frameSettingNumber = new Frame("Setting");
-				frameSettingNumber.addWindowListener(new WindowAdapter() {
+			if(e.getSource() == lg.setDrawsButton) {
+				frameSettingDraws = new Frame("Setting");
+				frameSettingDraws.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent e) {
-						frameSettingNumber.setVisible(false);
-						frameSettingNumber.dispose();
+						frameSettingDraws.setVisible(false);
+						frameSettingDraws.dispose();
 					}
 				});
 				
 				Image img = lg.tk.getImage("lotto.png");
-		        frameSettingNumber.setIconImage(img);
+		        frameSettingDraws.setIconImage(img);
 		        
-		        textFieldNumber = new JTextField();
-		        textFieldNumber.addKeyListener(this);
+		        textFieldDraws = new JTextField();
+		        textFieldDraws.addKeyListener(this);
 		        
-		        JLabel label = new JLabel("How many Lotto Number?");
+		        JLabel label = new JLabel("How many draws do you want?");
 		        JButton button = new JButton("check");
 		        button.addActionListener(new ActionListener() {
 		        	
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						frameSettingNumber.setVisible(false);
-						frameSettingNumber.dispose();
+						frameSettingDraws.setVisible(false);
+						frameSettingDraws.dispose();
 					}
 		        	
 		        });
 		        
 		        
-		        frameSettingNumber.add(textFieldNumber,BorderLayout.CENTER);
-		        frameSettingNumber.add(label,BorderLayout.NORTH);
-		        frameSettingNumber.add(button,BorderLayout.SOUTH);
-		        frameSettingNumber.setSize(300,200);
-				frameSettingNumber.setLocation(lg.x/2-lg.fx/2+250, lg.y/2-lg.fy/2+100);
-		        frameSettingNumber.setVisible(true);
+		        frameSettingDraws.add(textFieldDraws,BorderLayout.CENTER);
+		        frameSettingDraws.add(label,BorderLayout.NORTH);
+		        frameSettingDraws.add(button,BorderLayout.SOUTH);
+		        frameSettingDraws.setSize(300,200);
+				frameSettingDraws.setLocation(lg.x/2-lg.fx/2+250, lg.y/2-lg.fy/2+100);
+		        frameSettingDraws.setVisible(true);
 			}
 		}
-
+		
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
@@ -68,7 +69,7 @@ class numberSetting implements ActionListener, KeyListener{
 			// TODO Auto-generated method stub
 			if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 //				System.out.println(textFieldNumber.getText());
-				frameSettingNumber.dispose();
+				frameSettingDraws.dispose();
 			}
 		}
 
@@ -77,5 +78,7 @@ class numberSetting implements ActionListener, KeyListener{
 			// TODO Auto-generated method stub
 			
 		}
+}
+
     	
-    }
+
