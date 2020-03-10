@@ -66,15 +66,23 @@ public class ButtonActionListner implements ActionListener {
 	
 	private void generateNumber() {
 		Random rd = new Random();
-		
 		String val[] = new String[Integer.parseInt(setCounter.getSelectedItem().toString())];
 		
 		for(int i=0;i<Integer.parseInt(setCounter.getSelectedItem().toString());i++) {
-			int random = rd.nextInt(Integer.parseInt(setRange.getSelectedItem().toString()));
+			int random = rd.nextInt(Integer.parseInt(setRange.getSelectedItem().toString()))+1;
 			val[i] = Integer.toString(random);
-			System.out.println("Lotto Number" + (i+1) + ":" + random);
+			for(int j=0;j<i;j++) {
+				if(Integer.parseInt(val[i]) == Integer.parseInt(val[j])) {
+					i--;
+					break;
+				}
+			}
+		}
+		
+		for(int i=0;i<Integer.parseInt(setCounter.getSelectedItem().toString());i++) {
 			textconcator(val[i],i);
 		}
+		
 	}
 	
 	private void textconcator(String seed, int pos) {
