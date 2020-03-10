@@ -1,9 +1,14 @@
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class lottoMainUI extends JFrame {
 	
 	GUIComponent comp = new GUIComponent();
+	Toolkit tk;
+	Image img;
 	
 	public lottoMainUI() {
 		CreateUI("Random Lotto Picker");
@@ -11,6 +16,9 @@ public class lottoMainUI extends JFrame {
 	}
 	
 	public void CreateUI(String Title) {
+		tk = Toolkit.getDefaultToolkit();
+		img = tk.getImage("lotto.PNG");
+		setIconImage(img);
 		setTitle(Title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
