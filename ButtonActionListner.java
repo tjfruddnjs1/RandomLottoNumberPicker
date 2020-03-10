@@ -1,5 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 import javax.swing.JComboBox;
@@ -66,18 +69,20 @@ public class ButtonActionListner implements ActionListener {
 	
 	private void generateNumber() {
 		Random rd = new Random();
-		String val[] = new String[Integer.parseInt(setCounter.getSelectedItem().toString())];
+		Integer val[] = new Integer[Integer.parseInt(setCounter.getSelectedItem().toString())];
 		
 		for(int i=0;i<Integer.parseInt(setCounter.getSelectedItem().toString());i++) {
 			int random = rd.nextInt(Integer.parseInt(setRange.getSelectedItem().toString()))+1;
-			val[i] = Integer.toString(random);
+			val[i] = random;
 			for(int j=0;j<i;j++) {
-				if(Integer.parseInt(val[i]) == Integer.parseInt(val[j])) {
+				if(val[i] == val[j]) {
 					i--;
 					break;
 				}
 			}
 		}
+		
+		Arrays.sort(val);
 		
 		for(int i=0;i<Integer.parseInt(setCounter.getSelectedItem().toString());i++) {
 			textconcator(val[i],i);
@@ -85,7 +90,7 @@ public class ButtonActionListner implements ActionListener {
 		
 	}
 	
-	private void textconcator(String seed, int pos) {
+	private void textconcator(int seed, int pos) {
 		JTbox.append("Lotto" + (pos+1)+":"+seed+"\n");
 		JTbox.setCaretPosition(JTbox.getDocument().getLength());
 	}
