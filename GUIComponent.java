@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
 public class GUIComponent {
 	private JPanel mainContainer = new JPanel();
